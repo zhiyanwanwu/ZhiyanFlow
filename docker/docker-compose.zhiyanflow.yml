@@ -1,0 +1,6 @@
+services:
+  ragflow-cpu:
+    volumes: !override
+      - ./ragflow-logs:/ragflow/logs
+      - ./service_conf.yaml.template:/ragflow/conf/service_conf.yaml.template
+      - ../web/dist:/ragflow/web/dist:ro
