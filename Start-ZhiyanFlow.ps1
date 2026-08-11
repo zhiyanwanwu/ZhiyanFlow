@@ -3,9 +3,8 @@ $ErrorActionPreference = 'Stop'
 $composeDir = Join-Path $PSScriptRoot 'docker'
 $dockerDesktop = 'C:\Program Files\Docker\Docker\Docker Desktop.exe'
 
-try {
-    docker info *> $null
-} catch {
+docker info *> $null
+if ($LASTEXITCODE -ne 0) {
     if (-not (Test-Path $dockerDesktop)) {
         throw 'Docker Desktop is not installed.'
     }
@@ -29,4 +28,3 @@ try {
 }
 
 Start-Process 'http://127.0.0.1/'
-
